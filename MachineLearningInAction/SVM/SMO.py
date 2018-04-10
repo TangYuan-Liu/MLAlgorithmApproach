@@ -1,0 +1,3 @@
+"""
+SMO algorithm in action
+"""
