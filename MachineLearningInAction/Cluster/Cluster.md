@@ -1,7 +1,6 @@
 # Cluster
 ## INTRODUCDTION
-聚类是一种无监督学习，他讲相似的对象归类到同一个簇中。与分类的最大不同是，分类事先已经已知目标，而聚类的类别事先是没有定义的。本节我们将实现K-Means算法，  
-这是一种可将数据集分为k类的聚类算法。
+聚类是一种无监督学习，他讲相似的对象归类到同一个簇中。与分类的最大不同是，分类事先已经已知目标，而聚类的类别事先是没有定义的。本节我们将实现K-Means算法,这是一种可将数据集分为k类的聚类算法。
 ## ACTION
 ### NORMAL
 首先我们进行最传统的算法实现，该算法的基本流程如下：  
@@ -49,3 +48,21 @@ def kMeans(dataset,k):
 <img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./Final1.png" width="300" alt="cluster" />
 </div>
 <p align="center">图2 质心坐标</p>
+在数据集的随机化上，笔者做了一个实验。实际上dataset文件是笔者有意生成的四个区域，其在dataset文件中是有很强的规律性的。故在LoadDataset()模块，添加  
+了shuffle功能：
+<pre><code>
+hashlist = np.zeros([n,])
+    shuffle = np.zeros([n,2])
+    for i in range(n):
+        temp = dataset[i]
+        flag = 1
+        while(flag):
+            newid = int(np.floor(n*np.random.rand(1,)[0]))
+            if(hashlist[newid] == 0):
+                hashlist[newid] = 1
+                shuffle[newid] = temp
+                flag = 0
+            else:
+                flag = 1
+</code></pre> 
+实验结果表明：**数据集是否无序并不会影响聚类结果**
