@@ -46,6 +46,6 @@ def kMeans(dataset,k):
 <p align="center">图1 聚类结果</p>  
 我们看到算法在几次迭代后收敛，成功地进行了聚类，其中红色点为聚类最终质心。  
 <div align="center">
-<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./Final1.png" width="500" alt="cluster" />
+<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./Final1.png" width="300" alt="cluster" />
 </div>
 <p align="center">图2 质心坐标</p>
