@@ -1,5 +1,6 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
+import sys
 def LoadDataset(filename):
     path = "./" + filename
     f = open(path)
@@ -9,7 +10,21 @@ def LoadDataset(filename):
         dataset.append(map(float,temp))
     
     dataset = np.asarray(dataset)
-    return dataset
+    n = np.shape(dataset)[0]
+    hashlist = np.zeros([n,])
+    shuffle = np.zeros([n,2])
+    for i in range(n):
+        temp = dataset[i]
+        flag = 1
+        while(flag):
+            newid = int(np.floor(n*np.random.rand(1,)[0]))
+            if(hashlist[newid] == 0):
+                hashlist[newid] = 1
+                shuffle[newid] = temp
+                flag = 0
+            else:
+                flag = 1
+    return shuffle
 
 
 def FindRandomCenter(dataset,k):
@@ -21,13 +36,14 @@ def FindRandomCenter(dataset,k):
         y = np.min(dataset[:,1]) + np.random.rand(1,)[0] * RangeY
         center[i][0] = x
         center[i][1] = y
-
+    print("Original Center:")
     return center
 
 def Distance(vecA,vecB):
-    return np.sqrt(np.sum((vecA-vecB)**2))
+    return np.sqrt(np.sum(np.power(vecA-vecB,2)))
 
 def kMeans(dataset,k):
+    inf = float("inf")
     pointnum = np.shape(dataset)[0]
     center = FindRandomCenter(dataset,k)
     ClusterChanged = True
@@ -35,33 +51,33 @@ def kMeans(dataset,k):
     while ClusterChanged:
         ClusterChanged = False
         for i in range(pointnum):
-            minDist = None
-            minIndex = None
+            minDist = inf
+            minIndex = -1
             for j in range(k):
                 dis = Distance(center[j],dataset[i])
-                if(minDist == minIndex == None):
+                if(minDist > dis):
                     minDist = dis
                     minIndex = j
-                else:
-                    if(minDist > dis):
-                        minDist = dis
-                        minIndex = j
             if(ClusterAssment[i,0] != minIndex):
                 ClusterChanged = True
                 ClusterAssment[i,:] = minIndex,minDist**2
-               
-        print center
+             
         for cent in range(k):
-            temp = dataset[np.nonzero(ClusterAssment[:,0].A == cent)]
+            temp = dataset[np.nonzero(ClusterAssment[:,0].A == cent)[0]]
             center[cent] = np.mean(temp,axis=0)
-    
     return center,ClusterAssment
 
 
 if __name__ == "__main__":
-    name = "dataset"
+    args = sys.argv[1:]
+    name = args[0]
     dataset = LoadDataset(name)
-    kMeans(dataset,4)
-
- 
-
+    cent,assm = kMeans(dataset,4)
+    print("Final is:")
+    print cent
+    print("Assment:")
+    print assm
+    plt.figure()
+    plt.scatter(dataset[:,0],dataset[:,1],color="b")
+    plt.scatter(cent[:,0],cent[:,1],color="r")
+    plt.show()
