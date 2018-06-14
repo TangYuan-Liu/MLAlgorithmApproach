@@ -35,8 +35,17 @@ def kMeans(dataset,k):
                
         print center
         for cent in range(k):
-            temp = dataset[np.nonzero(ClusterAssment[:,0].A == cent)]
+            temp = dataset[np.nonzero(ClusterAssment[:,0].A == cent)[0]]
             center[cent] = np.mean(temp,axis=0)
     
     return center,ClusterAssment
-</code></pre>
+</code></pre>  
+<div align="center">
+<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./cluster.png" width="900" alt="cluster" />
+</div>
+<p align="center">图1 聚类结果</p>  
+我们看到算法在几次迭代后收敛，成功地进行了聚类，其中红色点为聚类最终质心。  
+<div align="center">
+<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./Final1.png" width="500" alt="cluster" />
+</div>
+<p align="center">图2 质心坐标</p>
