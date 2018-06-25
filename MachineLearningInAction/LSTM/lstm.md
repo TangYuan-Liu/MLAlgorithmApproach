@@ -5,9 +5,8 @@ LSTM网络实际上是一种模仿生物神经元记忆功能的深度神经网�
 <img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./lstmcell.png" width="900" alt="cluster" />
 </div>
 <p align="center">图1 LSTM Cell结构</p>  
-下面我们就对图中的四个门做一个介绍  
-首先应明确，第一个Cell的两个水平输出，分别是记忆（上）和单元输出（下）  
-### Forget Gate
+下面我们就对图中的四个门做一个介绍    
+## Forget Gate
 左边第一个即为遗忘门，它将t-1时刻的单元输出和t时刻的输入合并后，经过一个sigmoid变换，直接对t-1时刻的记忆进行作用。
 ### Input Gate
 左边第二个即为输入门，它将t时刻输入与t-1时刻输出合并后，经过sigmoid变换，再配合左边第三个网络层变换tanh，以一定比例对  
