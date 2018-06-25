@@ -1,6 +1,6 @@
-# Long-Short Term Memory Cell
-## KNOWLEDGE
-### Basic
+# Long-Short Term Memory Cell-----Part 1
+这一部分将对LSTM进行介绍，同时对算法进行推导。
+## INTRODUCTION
 LSTM网络实际上是一种模仿生物神经元记忆功能的深度神经网络，其原理如下图所示：
 <div align="center">
 <img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./lstmcell.png" width="900" alt="cluster" />
@@ -16,6 +16,6 @@ LSTM网络实际上是一种模仿生物神经元记忆功能的深度神经网�
 #### Output Gate
 第四个即为输出门，每一个时刻的输出，既依赖于当前时刻的输入，也依赖于历史记忆。所以输出门将t-1时刻lstm单元的输出、t时刻的输入以及
 记忆相叠加后，得到t时刻的lstm单元的输出。
-  
- 
 
+## ALGORITHM
+$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
