@@ -2,7 +2,7 @@
 ## Introduction
 逻辑回归的重要思想是根据现有的数据对分类边界建立回归公式，从而进行分类。待分类数据由特征组成，逻辑回归乘以一个回归系数后，带入激活函数进行得到结果，
 从而得到一个介于0-1之间的数，[0.5,1]为1，[0,0.5)为0。故实际上逻辑回归是一种概率估计。
-## 基于Singmoid函数的分类
+## 基于Sigmoid函数的分类
 <pre><code>
 import numpy as np
 import matplotlib.pyplot as plt
