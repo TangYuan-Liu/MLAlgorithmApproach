@@ -60,9 +60,9 @@ if __name__ == "__main__":
     dataMat,labelMat = loadDataset()
     weights = grandAscent(dataMat, labelMat)
     plotFig(weights, dataMat, labelMat)
-</code></p>
+</code></pre>  
 
 <div align="center">
-<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./.png" width="900" alt="cluster" />
+<img style="flex-grow:1; flex-shrink:1; border: 1px solid black;" src="./lr.png" width="900" alt="cluster" />
 </div>
 <p align="center">图1 分类结果</p>
